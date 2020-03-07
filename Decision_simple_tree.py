@@ -23,7 +23,7 @@ from IPython.display import Image
 
 os.chdir("/Users/mishrap1/KAGGLE/Decision_tree_kaggle")
 
-x  = pd.read_csv("kag_risk_factors_cervical_cancer.csv", sep=",")
+x  = pd.read_csv("input/kag_risk_factors_cervical_cancer.csv", sep=",")
 features = x.loc[:, x.columns != 'Dx:Cancer']
 features= x[['Age', 'STDs', 'IUD']]
 target   = x['Dx:Cancer'].astype('bool')
@@ -45,5 +45,5 @@ export_graphviz(dec_tree, out_file=dot_data,feature_names=feature_names)
 Image(graph.create_png())
 #y_pred = dec_tree.predict(features_test)
 #print(y_pred)
-graph.write_pdf("Decision_Tree_cervical.pdf")
+graph.write_png("Decision_Tree_cervical.png")
 
