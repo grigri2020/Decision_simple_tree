@@ -66,9 +66,9 @@ def main():
     dec_tree = DecisionTreeClassifier()
     feature_names =  features_train.columns
     dec_tree.fit(features_train,target_train)
-    dot_data = StringIO()
-    export_graphviz(dec_tree, out_file=dot_data,feature_names=feature_names)
-    (graph, ) = graph_from_dot_data(dot_data.getvalue())
+    dot_file = StringIO()
+    export_graphviz(dec_tree, out_file=dot_file,feature_names=feature_names)
+    (graph, ) = graph_from_dot_data(dot_file.getvalue())
     Image(graph.create_png())
     graph.write_png("Decision_Tree_cervical.png")
     
