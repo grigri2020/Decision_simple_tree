@@ -19,7 +19,7 @@ from sklearn.externals.six import StringIO
 from pydot import graph_from_dot_data
 from IPython.display import Image
 
-#rEFER DECISION TREE TUTORIAL:
+#REFER DECISION TREE TUTORIAL:
 #https://www.hackerearth.com/practice/machine-learning/machine-learning-algorithms/ml-decision-tree/tutorial/
 
 
