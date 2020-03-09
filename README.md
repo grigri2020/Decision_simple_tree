@@ -10,4 +10,7 @@ As expected HPV is the most important factor: root. Given below is the tree crea
 <img src=output/Decision_Tree_cervical.png> 
 
 
-test_size is set to 0.25 which is the defeault in DecisionTreeClassifier(). The default criterion for node split is "gini". But this can be changed to  DecisionTreeClassifier(criterion = 'entropy')
+test_size is set to 0.25 which is the defeault in DecisionTreeClassifier(). 
+>>The default criterion for node split is "gini". 
+But this can be changed to  
+>>DecisionTreeClassifier(criterion = 'entropy')
