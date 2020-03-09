@@ -15,5 +15,4 @@ The default criterion for node split is "gini".
 But this can be changed to  :
 >>DecisionTreeClassifier(criterion = 'entropy')
 
->>
-hello
+
