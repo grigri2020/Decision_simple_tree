@@ -13,6 +13,7 @@ import pandas as pd
 import numpy as np
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 from sklearn.tree import export_graphviz
 from sklearn import metrics
 from sklearn.externals.six import StringIO 
@@ -51,6 +52,12 @@ class Decision_tree:
         features_train, features_test, target_train, target_test =\
         train_test_split(features, target, random_state=1)
         return(features_train, features_test, target_train, target_test)
+        
+    #Input whether the set is test or train and 
+    def prediction_for_tree(self, decision_tree_obj, set_t):
+        dec_tree_pred =  decision_tree_obj.predict(set_t)
+        return(dec_tree_pred)
+    
 
 def main():
     input = "input/kag_risk_factors_cervical_cancer.csv"
@@ -63,14 +70,24 @@ def main():
     
     
     #Make a decision tree cxlassifier object
-    dec_tree = DecisionTreeClassifier()
+    dec_tree = DecisionTreeClassifier(min_samples_split=5)
     feature_names =  features_train.columns
     dec_tree.fit(features_train,target_train)
+    
+    dec_tree_train_pred =  my_dec.prediction_for_tree(dec_tree, features_train)
+    dec_tree_test_pred  =  my_dec.prediction_for_tree(dec_tree, features_test)
+    
+    #print(type(dec_tree_train_pred))
     dot_file = StringIO()
     export_graphviz(dec_tree, out_file=dot_file,feature_names=feature_names)
     (graph, ) = graph_from_dot_data(dot_file.getvalue())
     Image(graph.create_png())
-    graph.write_png("Decision_Tree_cervical.png")
+    graph.write_png("Decision_Tree_cervical_entropy.png")
+    
+    
+    print('Accuracy Score on train data: ', accuracy_score(y_true=target_train, y_pred=dec_tree_train_pred))
+    print('Accuracy Score on test data: ', accuracy_score(y_true=target_test, y_pred=dec_tree_test_pred))
+
     
     
 #This is where it all began
