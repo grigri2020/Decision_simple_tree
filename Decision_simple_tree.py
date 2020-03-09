@@ -85,11 +85,11 @@ def main():
     graph.write_png("Decision_Tree_cervical_entropy.png")
     
     
-    print('Accuracy Score on train data: ', accuracy_score(y_true=target_train, y_pred=dec_tree_train_pred))
-    print('Accuracy Score on test data: ', accuracy_score(y_true=target_test, y_pred=dec_tree_test_pred))
+    print('Accuracy on training: ', accuracy_score(y_true=target_train, y_pred=dec_tree_train_pred))
+    print('Accuracy on test: ', accuracy_score(y_true=target_test, y_pred=dec_tree_test_pred))
 
-    
-    
+    print ('Remember if the Accuracy score for training data is 1 then it  is overfitted')
+    print ('This issue can be avoided by many ways but easiest is changing min_samples_split')
 #This is where it all began
 if __name__ == "__main__": main()
 
